@@ -39,7 +39,7 @@ public:
 };
 
 
-class Converter : public Currecy, public Dollar
+class ConvertorDollarToRubl : public Currecy, public Dollar
 {
 public:
     unsigned int GetCurse() override
@@ -49,7 +49,7 @@ public:
 };
 
 
-class EuroAdapter : public Currecy, public Euro
+class ConvertorEuroToRubl : public Currecy, public Euro
 {
 public:
     unsigned int GetCurse() override
@@ -59,7 +59,7 @@ public:
 };
 
 
-class PoundAdapter : public Currecy, public Pound
+class ConvertorPoundToRubl : public Currecy, public Pound
 {
 public:
     unsigned int GetCurse() override
@@ -88,15 +88,15 @@ int main()
     GetCource(rubl);
 
     cout << "\nТеперь цены указаны в долларах\n";
-    Currecy* bank = new Converter();
+    Currecy* bank = new ConvertorDollarToRubl();
     GetCource(bank);
 
     cout << "\nТеперь цены указаны в евро\n";
-    Currecy* euro = new EuroAdapter();
+    Currecy* euro = new ConvertorEuroToRubl();
     GetCource(euro);
 
     cout << "\nТеперь цены указаны в фунтах стерлингов\n";
-    Currecy* pound = new PoundAdapter();
+    Currecy* pound = new ConvertorPoundToRubl();
     GetCource(pound);
 
     delete rubl;
@@ -105,4 +105,5 @@ int main()
     delete pound;
 
     return 0;
+
 }
